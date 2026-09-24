@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SoundWave - Tu plataforma de streaming de música favorita">
+  <title>SoundWave • Reproductor de Música</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-wave-square"></i>
+        </div>
+        <span>SoundWave</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#" class="nav-item active" data-view="home">
+          <i class="fa-solid fa-house"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="#" class="nav-item" data-view="search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <span>Buscar</span>
+        </a>
+        <a href="#" class="nav-item" data-view="library">
+          <i class="fa-solid fa-lines-leaning"></i>
+          <span>Tu biblioteca</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-divider"></div>
+
+      <div class="playlists-header">
+        <span class="subheading">PLAYLISTS</span>
+        <button class="icon-btn-small" id="createPlaylistBtn" title="Crear Playlist">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </div>
+
+      <div class="playlist-list" id="sidebarPlaylists">
+        <div class="playlist-item active">
+          <i class="fa-solid fa-heart gradient-icon"></i>
+          <span>Canciones que te gustan</span>
+        </div>
+        <div class="playlist-item">
+          <i class="fa-solid fa-compact-disc"></i>
+          <span>Descubrimiento Semanal</span>
+        </div>
+        <div class="playlist-item">
+          <i class="fa-solid fa-bolt"></i>
+          <span>Éxitos Urbanos 2026</span>
+        </div>
+        <div class="playlist-item">
+          <i class="fa-solid fa-headphones"></i>
+          <span>Lo-Fi Chill & Coding</span>
+        </div>
+        <div class="playlist-item">
+          <i class="fa-solid fa-guitar"></i>
+          <span>Rock Clásico Essentials</span>
+        </div>
+      </div>
+
+      <div class="user-badge">
+        <div class="avatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="user-info">
+          <span class="user-name">Izan Music</span>
+          <span class="user-plan">Plan Premium</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="topbar">
+        <div class="navigation-controls">
+          <button class="round-btn" title="Atrás"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="round-btn" title="Adelante"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+
+        <div class="search-wrapper">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="searchInput" placeholder="¿Qué quieres escuchar hoy?" />
+        </div>
+
+        <div class="topbar-actions">
+          <button class="btn-primary" id="exploreBtn">Explorar Premium</button>
+          <button class="notification-btn" title="Notificaciones">
+            <i class="fa-regular fa-bell"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Content Views -->
+      <div class="scroll-content">
+        <!-- Hero Banner -->
+        <section class="hero-banner"
+          style="background-image: linear-gradient(135deg, rgba(18, 18, 18, 0.8) 0%, rgba(29, 185, 84, 0.4) 100%), url('img/hero.jpg');">
+          <div class="hero-content">
+            <span class="tag">DESTACADO DE LA SEMANA</span>
+            <h1>Sonidos Sin Límites</h1>
+            <p>Descubre los nuevos lanzamientos y las mejores listas curadas especialmente para ti.</p>
+            <div class="hero-actions">
+              <button class="btn-play-large" id="heroPlayBtn">
+                <i class="fa-solid fa-play"></i> Reproducir Mix
+              </button>
+              <button class="btn-secondary">
+                <i class="fa-regular fa-heart"></i> Guardar
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Category Chips -->
+        <div class="chips-container">
+          <button class="chip active">Todo</button>
+          <button class="chip">Música</button>
+          <button class="chip">Podcasts</button>
+          <button class="chip">Electrónica</button>
+          <button class="chip">Rock</button>
+          <button class="chip">Pop</button>
+        </div>
+
+        <!-- Quick Access Grid -->
+        <section class="section">
+          <h2>Buenas tardes</h2>
+          <div class="quick-grid" id="quickGrid">
+            <!-- Rendered by JS -->
+          </div>
+        </section>
+
+        <!-- Featured Albums / Cards -->
+        <section class="section">
+          <div class="section-header">
+            <h2>Álbumes y Listas Recomendadas</h2>
+            <a href="#" class="see-all">Mostrar todo</a>
+          </div>
+          <div class="cards-grid" id="albumsGrid">
+            <!-- Rendered by JS -->
+          </div>
+        </section>
+
+        <!-- Popular Songs Table -->
+        <section class="section">
+          <div class="section-header">
+            <h2>Tendencias Globales</h2>
+            <a href="#" class="see-all">Ver ranking</a>
+          </div>
+          <div class="songs-table-container">
+            <table class="songs-table" id="songsTable">
+              <thead>
+                <tr>
+                  <th style="width: 40px;">#</th>
+                  <th>Título</th>
+                  <th>Álbum</th>
+                  <th><i class="fa-regular fa-clock"></i></th>
+                  <th style="width: 60px;"></th>
+                </tr>
+              </thead>
+              <tbody id="songsList">
+                <!-- Rendered by JS -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Bottom Audio Player Bar -->
+  <footer class="player-bar">
+    <div class="player-track-info">
+      <img src="img/album1.jpg" alt="Portada" id="playerThumb" class="player-thumb">
+      <div class="track-details">
+        <span class="track-title" id="playerTitle">Midnight City Drive</span>
+        <span class="track-artist" id="playerArtist">Neon Horizon</span>
+      </div>
+      <button class="btn-like" id="playerLikeBtn" title="Me gusta">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+    </div>
+
+    <div class="player-controls-wrapper">
+      <div class="player-buttons">
+        <button class="ctrl-btn" id="shuffleBtn" title="Aleatorio">
+          <i class="fa-solid fa-shuffle"></i>
+        </button>
+        <button class="ctrl-btn" id="prevBtn" title="Anterior">
+          <i class="fa-solid fa-backward-step"></i>
+        </button>
+        <button class="ctrl-btn play-main-btn" id="mainPlayBtn" title="Reproducir">
+          <i class="fa-solid fa-play" id="mainPlayIcon"></i>
+        </button>
+        <button class="ctrl-btn" id="nextBtn" title="Siguiente">
+          <i class="fa-solid fa-forward-step"></i>
+        </button>
+        <button class="ctrl-btn" id="repeatBtn" title="Repetir">
+          <i class="fa-solid fa-repeat"></i>
+        </button>
+      </div>
+
+      <div class="playback-bar">
+        <span class="time-current" id="timeCurrent">0:00</span>
+        <div class="progress-container" id="progressContainer">
+          <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
+        </div>
+        <span class="time-total" id="timeTotal">3:45</span>
+      </div>
+    </div>
+
+    <div class="player-extra-controls">
+      <button class="extra-btn" title="Cola de reproducción"><i class="fa-solid fa-list-ul"></i></button>
+      <button class="extra-btn" title="Dispositivos"><i class="fa-solid fa-laptop-medical"></i></button>
+      <div class="volume-container">
+        <button class="extra-btn" id="muteBtn" title="Silenciar"><i class="fa-solid fa-volume-high"
+            id="volumeIcon"></i></button>
+        <input type="range" min="0" max="100" value="75" id="volumeSlider" class="volume-slider">
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+
+</html>
